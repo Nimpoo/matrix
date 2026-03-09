@@ -5,8 +5,8 @@ pub struct Vector<K> {
 
 pub struct Matrix<K> {
     data: Vec<Vec<K>>,
-    row: i32,
-    col: i32
+    col: usize,
+    row: usize
 }
 
 impl<K> Vector<K> {
@@ -40,11 +40,11 @@ impl<K> Matrix<K> {
         }
     }
 
-    pub fn from(src: Vec<Vec<K>>, x: i32, y: i32) -> Matrix<K> {
+    pub fn from(src: Vec<Vec<K>>) -> Matrix<K> {
         Matrix {
             data: Vec::<Vec<K>>::from(src),
-            row: x,
-            col: y
+            col: src.len(),
+            row: src[0].len()
         }
     }
 

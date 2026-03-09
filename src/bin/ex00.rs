@@ -12,4 +12,10 @@ fn main() {
 
   from.pop();
   println!("{:?}", from);
+
+
+  let mat: matrix::Matrix<i32> = matrix::Matrix::from(vec![
+    vec![1, 2, 3],
+    vec![4, 5, 6],
+  ]);
 }
