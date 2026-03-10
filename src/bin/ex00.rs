@@ -1,3 +1,5 @@
+use std::vec;
+
 use matrix;
 
 fn main() {
@@ -14,8 +16,17 @@ fn main() {
   println!("{:?}", from);
 
 
-  let mat: matrix::Matrix<i32> = matrix::Matrix::from(vec![
-    vec![1, 2, 3],
-    vec![4, 5, 6],
+  let mat_1: matrix::Matrix<i32> = matrix::Matrix::from(vec![
+    vec![1, 2],
+    vec![3, 4],
   ]);
+
+  println!("{:?}", mat_1);
+
+  let mat_2: matrix::Matrix<i32> = matrix::Matrix::from(vec![
+    vec![5, 6],
+    vec![7, 8]
+  ]);
+
+  
 }
