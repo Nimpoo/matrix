@@ -66,6 +66,20 @@ impl<K: std::ops::Sub<Output = K> + Copy> Vector<K> {
   }
 }
 
+impl<K: std::ops::Mul<Output = K> + Copy> Vector<K> {
+  pub fn scl(&mut self, a: K) -> Result<(), &str> {
+
+    if self.data.len() > 2 {
+      return Err("Cannot scale a vector with a lenght superior than 2.");
+    }
+
+    self.data[0] = self.data[0] * a;
+    self.data[1] = self.data[0] * a;
+
+    Ok(())
+  }
+}
+
 impl<K> Matrix<K> {
   pub fn new() -> Matrix<K> {
     Matrix {
