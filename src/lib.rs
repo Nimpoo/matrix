@@ -10,7 +10,7 @@ pub struct Matrix<K> {
   row: usize
 }
 
-impl<K: std::ops::Add<Output = K> + std::ops::Sub<Output = K> + Copy> Vector<K> {
+impl<K> Vector<K> {
   pub fn new() -> Vector<K> {
     Vector {
       data: Vec::<K>::new()
@@ -30,21 +30,39 @@ impl<K: std::ops::Add<Output = K> + std::ops::Sub<Output = K> + Copy> Vector<K> 
   pub fn pop(&mut self) {
     self.data.pop();
   }
+}
 
-  pub fn add(&mut self, v: &Vector<K>) {
-      let v1 = self.data[0] + v.data[0];
-      let v2 = self.data[1] + v.data[1];
+impl<K: std::ops::Add<Output = K> + Copy> Vector<K> {
+  pub fn add(&mut self, v: &Vector<K>) -> Result<(), &str> {
 
-      self.data[0] = v1;
-      self.data[1] = v2;
+    if v.data.len() > 2 {
+      return Err("Cannot add 2 vectors themselves with different lengh.");
+    }
+
+    let v1 = self.data[0] + v.data[0];
+    let v2 = self.data[1] + v.data[1];
+
+    self.data[0] = v1;
+    self.data[1] = v2;
+
+    Ok(())
   }
+}
 
-  pub fn sub(&mut self, v: &Vector<K>) {
-      let v1 = self.data[0] - v.data[0];
-      let v2 = self.data[1] - v.data[1];
+impl<K: std::ops::Sub<Output = K> + Copy> Vector<K> {
+  pub fn sub(&mut self, v: &Vector<K>) -> Result<(), &str> {
 
-      self.data[0] = v1;
-      self.data[1] = v2;
+    if v.data.len() > 2 {
+      return Err("Cannot substract 2 vectors themselves with different lengh.");
+    }
+
+    let v1 = self.data[0] - v.data[0];
+    let v2 = self.data[1] - v.data[1];
+
+    self.data[0] = v1;
+    self.data[1] = v2;
+
+    Ok(())
   }
 }
 
