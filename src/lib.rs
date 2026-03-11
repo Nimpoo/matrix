@@ -10,7 +10,7 @@ pub struct Matrix<K> {
   row: usize
 }
 
-impl<K: std::ops::Add<Output = K> + Copy> Vector<K> {
+impl<K: std::ops::Add<Output = K> + std::ops::Sub<Output = K> + Copy> Vector<K> {
   pub fn new() -> Vector<K> {
     Vector {
       data: Vec::<K>::new()
@@ -34,7 +34,15 @@ impl<K: std::ops::Add<Output = K> + Copy> Vector<K> {
   pub fn add(&mut self, v: &Vector<K>) {
       let v1 = self.data[0] + v.data[0];
       let v2 = self.data[1] + v.data[1];
-      
+
+      self.data[0] = v1;
+      self.data[1] = v2;
+  }
+
+  pub fn sub(&mut self, v: &Vector<K>) {
+      let v1 = self.data[0] - v.data[0];
+      let v2 = self.data[1] - v.data[1];
+
       self.data[0] = v1;
       self.data[1] = v2;
   }
