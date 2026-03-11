@@ -10,7 +10,7 @@ pub struct Matrix<K> {
   row: usize
 }
 
-impl<K> Vector<K> {
+impl<K: std::ops::Add<Output = K> + Copy> Vector<K> {
   pub fn new() -> Vector<K> {
     Vector {
       data: Vec::<K>::new()
@@ -29,6 +29,14 @@ impl<K> Vector<K> {
 
   pub fn pop(&mut self) {
     self.data.pop();
+  }
+
+  pub fn add(&mut self, v: &Vector<K>) {
+      let v1 = self.data[0] + v.data[0];
+      let v2 = self.data[1] + v.data[1];
+      
+      self.data[0] = v1;
+      self.data[1] = v2;
   }
 }
 
@@ -51,15 +59,7 @@ impl<K> Matrix<K> {
     }
   }
 
-  pub fn add() {
-    
-  }
-
-  pub fn push() {
-    
-  }
-
-  pub fn pop() {
+  pub fn add(&mut self, _v: &Matrix<K>) {
     
   }
 }
