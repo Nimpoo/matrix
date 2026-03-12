@@ -128,3 +128,26 @@ impl<K> Matrix<K>
     Ok(())
   }
 }
+
+impl<K> Matrix<K>
+  where
+    // Bounds from impl:
+    K: std::ops::SubAssign + Copy
+{
+  pub fn sub(&mut self, v: &Matrix<K>) -> Result<(), &str> {
+    if self.col != v.col {
+      return Err("Cannot sub 2 matrices with different number of columns.");
+    }
+    if self.row != v.row {
+      return Err("Cannot sub 2 matrices with different number of rows.");
+    }
+
+    for r in 0..self.row {
+      for c in 0..self.col {
+        self.data[r][c] -= v.data[r][c];
+      }
+    } 
+
+    Ok(())
+  }
+}
