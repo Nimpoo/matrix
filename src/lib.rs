@@ -32,7 +32,11 @@ impl<K> Vector<K> {
   }
 }
 
-impl<K: std::ops::AddAssign<K> + Copy> Vector<K> {
+impl<K> Vector<K>
+  where
+    // Bounds from impl:
+    K: std::ops::AddAssign<K> + Copy
+{
   pub fn add(&mut self, v: &Vector<K>) -> Result<(), &str> {
 
     if v.data.len() > 2 {
@@ -46,7 +50,11 @@ impl<K: std::ops::AddAssign<K> + Copy> Vector<K> {
   }
 }
 
-impl<K: std::ops::SubAssign<K> + Copy> Vector<K> {
+impl<K> Vector<K>
+  where
+    // Bounds from impl:
+    K: std::ops::SubAssign<K> + Copy
+{
   pub fn sub(&mut self, v: &Vector<K>) -> Result<(), &str> {
 
     if v.data.len() > 2 {
@@ -60,7 +68,11 @@ impl<K: std::ops::SubAssign<K> + Copy> Vector<K> {
   }
 }
 
-impl<K: std::ops::MulAssign<K> + Copy> Vector<K> {
+impl<K> Vector<K>
+  where
+    // Bounds from impl:
+    K: std::ops::MulAssign<K> + Copy
+{
   pub fn scl(&mut self, a: K) -> Result<(), &str> {
 
     if self.data.len() > 2 {
@@ -94,8 +106,11 @@ impl<K> Matrix<K> {
   }
 }
 
-impl<K: std::ops::AddAssign + Copy> Matrix<K> {
-
+impl<K> Matrix<K>
+  where
+    // Bounds from impl:
+    K: std::ops::AddAssign + Copy
+{
   pub fn add(&mut self, v: &Matrix<K>) -> Result<(), &str> {
     if self.col != v.col {
       return Err("Cannot add 2 matrices with different number of columns.");
