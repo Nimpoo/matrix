@@ -92,8 +92,24 @@ impl<K> Matrix<K> {
       row: row_src
     }
   }
+}
 
-  pub fn add(&mut self, _v: &Matrix<K>) {
-    
+impl<K: std::ops::AddAssign + Copy> Matrix<K> {
+
+  pub fn add(&mut self, v: &Matrix<K>) -> Result<(), &str> {
+    if self.col != v.col {
+      return Err("Cannot add 2 matrices with different number of columns.");
+    }
+    if self.row != v.row {
+      return Err("Cannot add 2 matrices with different number of rows.");
+    }
+
+    for r in 0..self.row {
+      for c in 0..self.col {
+        self.data[r][c] += v.data[r][c];
+      }
+    } 
+
+    Ok(())
   }
 }
