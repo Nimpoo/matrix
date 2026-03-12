@@ -32,49 +32,43 @@ impl<K> Vector<K> {
   }
 }
 
-impl<K: std::ops::Add<Output = K> + Copy> Vector<K> {
+impl<K: std::ops::AddAssign<K> + Copy> Vector<K> {
   pub fn add(&mut self, v: &Vector<K>) -> Result<(), &str> {
 
     if v.data.len() > 2 {
       return Err("Cannot add 2 vectors themselves: one of them has more than 2 coordinate points.");
     }
 
-    let v1 = self.data[0] + v.data[0];
-    let v2 = self.data[1] + v.data[1];
-
-    self.data[0] = v1;
-    self.data[1] = v2;
+    self.data[0] += v.data[0];
+    self.data[1] += v.data[1];
 
     Ok(())
   }
 }
 
-impl<K: std::ops::Sub<Output = K> + Copy> Vector<K> {
+impl<K: std::ops::SubAssign<K> + Copy> Vector<K> {
   pub fn sub(&mut self, v: &Vector<K>) -> Result<(), &str> {
 
     if v.data.len() > 2 {
       return Err("Cannot substract 2 vectors themselves: one of them has more than 2 coordinate points.");
     }
 
-    let v1 = self.data[0] - v.data[0];
-    let v2 = self.data[1] - v.data[1];
-
-    self.data[0] = v1;
-    self.data[1] = v2;
+    self.data[0] -= v.data[0];
+    self.data[1] -= v.data[1];
 
     Ok(())
   }
 }
 
-impl<K: std::ops::Mul<Output = K> + Copy> Vector<K> {
+impl<K: std::ops::MulAssign<K> + Copy> Vector<K> {
   pub fn scl(&mut self, a: K) -> Result<(), &str> {
 
     if self.data.len() > 2 {
       return Err("Cannot scale a vector with more than 2 coordinate points.");
     }
 
-    self.data[0] = self.data[0] * a;
-    self.data[1] = self.data[0] * a;
+    self.data[0] *= a;
+    self.data[1] *= a;
 
     Ok(())
   }
