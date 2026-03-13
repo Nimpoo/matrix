@@ -151,3 +151,19 @@ impl<K> Matrix<K>
     Ok(())
   }
 }
+
+impl<K> Matrix<K>
+  where
+  // Bounds from impl:
+    K: std::ops::MulAssign + Copy
+{
+  pub fn scl(&mut self, a: K) -> Result<(), &str> {
+    for r in 0..self.row {
+      for c in 0..self.col {
+        self.data[r][c] *= a;
+      }
+    }
+
+    Ok(())
+  }
+}
