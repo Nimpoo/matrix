@@ -130,6 +130,10 @@ impl<K> Matrix<K>
       return Err("Cannot add 2 matrices with different number of rows.");
     }
 
+    if self.is_rectangular == false || v.is_rectangular == false {
+      return Err("Cannot add a matrice that's not rectangular.");
+    }
+
     for r in 0..self.row {
       for c in 0..self.col {
         self.data[r][c] += v.data[r][c];
@@ -169,6 +173,10 @@ impl<K> Matrix<K>
     K: std::ops::MulAssign + Copy
 {
   pub fn scl(&mut self, a: K) -> Result<(), &str> {
+    if self.is_rectangular == false {
+      return Err("Cannot scale a matrice that's not rectangular.");
+    }
+
     for r in 0..self.row {
       for c in 0..self.col {
         self.data[r][c] *= a;
