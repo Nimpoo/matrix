@@ -3,10 +3,14 @@ use std::vec;
 use matrix::{Vector, Matrix};
 
 fn main() {
+
+  // ? VECTOR TESTS
   println!("|-------- Vector tests --------|");
 
   println!();
 
+  // * ***************************************************************************
+  // * VECTOR - BASIC FUNCTIONS
   println!("~ Basic functions");
 
   println!();
@@ -34,7 +38,9 @@ fn main() {
   println!("Last value poped in variable `vector_1` = [ {:?} ]", vector_1);
 
   println!();
+  // * ***************************************************************************
 
+  // * VECTOR - MANADATORY FUNCTIONS
   println!("~ Mandatory functions");
 
   println!();
@@ -147,11 +153,14 @@ fn main() {
   }
   println!();
   println!();
+  // * ***************************************************************************
 
+  // ? MATRIX TESTS
   println!("|-------- Matrix tests --------|");
 
   println!();
 
+  // * MATRIX - BASIC FUNCTIONS
   println!("~ Basic functions");
 
   println!();
@@ -168,7 +177,9 @@ fn main() {
   println!("variable `matrix_1` = {:?}", matrix_1);
 
   println!();
+  // * ***************************************************************************
 
+  // * MATRIX - MANADATORY FUNCTIONS
   println!("~ Mandatory functions");
 
   println!();
@@ -288,4 +299,5 @@ fn main() {
     },
     Err(msg) => println!("{}", msg),
   }
+  // * ***************************************************************************
 }
