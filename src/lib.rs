@@ -40,7 +40,7 @@ impl<K> Vector<K>
 {
   pub fn add(&mut self, v: &Vector<K>) -> Result<(), &str> {
 
-    if v.data.len() > 2 {
+    if v.data.len() != 2 {
       return Err("Cannot add 2 vectors themselves: one of them has more than 2 coordinate points.");
     }
 
@@ -58,7 +58,7 @@ impl<K> Vector<K>
 {
   pub fn sub(&mut self, v: &Vector<K>) -> Result<(), &str> {
 
-    if v.data.len() > 2 {
+    if v.data.len() != 2 {
       return Err("Cannot substract 2 vectors themselves: one of them has more than 2 coordinate points.");
     }
 
@@ -76,7 +76,7 @@ impl<K> Vector<K>
 {
   pub fn scl(&mut self, a: K) -> Result<(), &str> {
 
-    if self.data.len() > 2 {
+    if self.data.len() != 2 {
       return Err("Cannot scale a vector with more than 2 coordinate points.");
     }
 
