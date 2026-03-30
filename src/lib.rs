@@ -150,16 +150,15 @@ impl<K> Matrix<K>
     K: std::ops::SubAssign + Copy
 {
   pub fn sub(&mut self, v: &Matrix<K>) -> Result<(), &str> {
+    if self.col != v.col {
+      return Err("Cannot add 2 matrices with different number of columns.");
+    }
+    if self.row != v.row {
+      return Err("Cannot add 2 matrices with different number of rows.");
+    }
 
     if self.is_rectangular == false || v.is_rectangular == false {
       return Err("Cannot substracte a matrice that's not rectangular.");
-    }
-
-    match (self.col == v.col, self.row == v.row) {
-      (false, false) => return Err("Cannot sub 2 matrices with different dimension."),
-      (false, true) => return Err("Cannot sub 2 matrices with different number of columns."),
-      (true, false) => return Err("Cannot sub 2 matrices with different number of rows."),
-      (true, true) => ()
     }
 
     for r in 0..self.row {
