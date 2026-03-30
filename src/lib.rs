@@ -7,7 +7,8 @@ pub struct Vector<K> {
 pub struct Matrix<K> {
   data: Vec<Vec<K>>,
   col: usize,
-  row: usize
+  row: usize,
+  is_rectangular: bool
 }
 
 impl<K> Vector<K> {
@@ -91,17 +92,27 @@ impl<K> Matrix<K> {
     Matrix {
       data: Vec::<Vec<K>>::new(),
       row: 0,
-      col: 0
+      col: 0,
+      is_rectangular: true
     }
   }
 
   pub fn from(src: Vec<Vec<K>>) -> Matrix<K> {
     let col_src = src[0].len();
     let row_src = src.len();
+    let mut rect: bool = true;
+
+    for i in &src {
+      if i.len() != col_src {
+        rect = false;
+      }
+    }
+
     Matrix {
       data: Vec::<Vec<K>>::from(src),
       col: col_src,
-      row: row_src
+      row: row_src,
+      is_rectangular: rect
     }
   }
 }
