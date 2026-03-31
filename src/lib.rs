@@ -40,12 +40,13 @@ impl<K> Vector<K>
 {
   pub fn add(&mut self, v: &Vector<K>) -> Result<(), &str> {
 
-    if v.data.len() != 2 {
-      return Err("Cannot add 2 vectors themselves: one of them has more than 2 coordinate points.");
+    if self.data.len() != v.data.len() {
+      return Err("Cannot add 2 vectors themselves: they have different number of dimension.");
     }
 
-    self.data[0] += v.data[0];
-    self.data[1] += v.data[1];
+    for i in 0..self.data.len() {
+      self.data[i] += v.data[i];
+    }
 
     Ok(())
   }
@@ -58,12 +59,13 @@ impl<K> Vector<K>
 {
   pub fn sub(&mut self, v: &Vector<K>) -> Result<(), &str> {
 
-    if v.data.len() != 2 {
-      return Err("Cannot substract 2 vectors themselves: one of them has more than 2 coordinate points.");
+    if self.data.len() != v.data.len() {
+      return Err("Cannot substract 2 vectors themselves: they have different number of dimension.");
     }
 
-    self.data[0] -= v.data[0];
-    self.data[1] -= v.data[1];
+    for i in 0..self.data.len() {
+      self.data[i] -= v.data[i];
+    }
 
     Ok(())
   }
@@ -76,12 +78,13 @@ impl<K> Vector<K>
 {
   pub fn scl(&mut self, a: K) -> Result<(), &str> {
 
-    if self.data.len() != 2 {
-      return Err("Cannot scale a vector with more than 2 coordinate points.");
-    }
+    // if self.data.len() != 2 {
+    //   return Err("Cannot scale a vector with more than 2 coordinate points.");
+    // }
 
-    self.data[0] *= a;
-    self.data[1] *= a;
+    for i in 0..self.data.len() {
+      self.data[i] *= a;
+    }
 
     Ok(())
   }
