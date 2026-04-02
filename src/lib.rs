@@ -193,3 +193,11 @@ impl<K> Matrix<K>
     Ok(())
   }
 }
+
+pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Vector<K> {
+  if u.len() != coefs.len() {
+    ()
+  }
+
+  Vector::from(vec![])
+}
