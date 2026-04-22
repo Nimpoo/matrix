@@ -1,3 +1,5 @@
+use std::{thread::sleep, time::Duration};
+
 #[derive(Debug)]
 pub struct Vector<K> {
   data: Vec<K>
@@ -12,13 +14,13 @@ pub struct Matrix<K> {
 }
 
 impl<K> Vector<K> {
-  pub fn new() -> Vector<K> {
+  pub fn new() -> Self {
     Vector {
       data: Vec::<K>::new()
     }
   }
 
-  pub fn from(src: Vec<K>) -> Vector<K> {
+  pub fn from(src: Vec<K>) -> Self {
     Vector {
       data: Vec::<K>::from(src)
     }
@@ -100,7 +102,7 @@ impl<K> Matrix<K> {
     }
   }
 
-  pub fn from(src: Vec<Vec<K>>) -> Matrix<K> {
+  pub fn from(src: Vec<Vec<K>>) -> Self {
     let col_src = src[0].len();
     let row_src = src.len();
     let mut rect: bool = true;
@@ -194,10 +196,40 @@ impl<K> Matrix<K>
   }
 }
 
-pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Vector<K> {
+pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Vector<K>
+  where
+    K: std::ops::Mul<Output = K> + Copy + std::fmt::Debug + std::ops::Add<Output = K>
+{
   if u.len() != coefs.len() {
     ()
   }
 
-  Vector::from(vec![])
+  let mut result: Vector<K> = Vector::from(Vec::with_capacity(u[0].data.len()));
+
+  println!("u = {:?} | coefs = {:?}", u, coefs);
+
+  for i in 0..u.len() {
+    println!("u[{i}] = {:?}", u[i])
+  }
+
+  for i in 0..u[0].data.len() {
+    println!();
+    println!("i = {i}");
+    let mut sum = coefs[0] * u[0].data[i];
+    println!("sum = coefs[0] * u[0].data[i]");
+    println!("sum = {:?} * {:?} = {:?}", coefs[0], u[0].data[i], sum);
+
+    for j in 1..u.len() {
+      println!();
+      println!("  j = {j}");
+      println!("  sum = sum + coefs[j] * u[j].data[i]");
+      println!("  sum = {:?} + {:?} * {:?}", sum, coefs[j], u[j].data[i]);
+      sum = sum + coefs[j] * u[j].data[i];
+      println!("  sum = {:?}", sum);
+    }
+    result.push(sum);
+    println!("result.push(sum)");
+  }
+
+  result
 }
