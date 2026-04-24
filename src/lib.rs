@@ -196,6 +196,7 @@ impl<K> Matrix<K>
 
 pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Option<Vector<K>>
   where
+  // Bound from impl:
     K: std::ops::AddAssign + std::ops::Mul<Output = K> + Copy
 {
   if u.len() != coefs.len() {
