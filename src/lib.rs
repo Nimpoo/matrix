@@ -1,5 +1,3 @@
-use std::{thread::sleep, time::Duration};
-
 #[derive(Debug)]
 pub struct Vector<K> {
   data: Vec<K>
@@ -213,22 +211,12 @@ pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Vector<K>
   }
 
   for i in 0..u[0].data.len() {
-    println!();
-    println!("i = {i}");
     let mut sum = coefs[0] * u[0].data[i];
-    println!("sum = coefs[0] * u[0].data[i]");
-    println!("sum = {:?} * {:?} = {:?}", coefs[0], u[0].data[i], sum);
 
     for j in 1..u.len() {
-      println!();
-      println!("  j = {j}");
-      println!("  sum = sum + coefs[j] * u[j].data[i]");
-      println!("  sum = {:?} + {:?} * {:?}", sum, coefs[j], u[j].data[i]);
       sum = sum + coefs[j] * u[j].data[i];
-      println!("  sum = {:?}", sum);
     }
     result.push(sum);
-    println!("result.push(sum)");
   }
 
   result
