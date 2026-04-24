@@ -91,7 +91,7 @@ impl<K> Vector<K>
 }
 
 impl<K> Matrix<K> {
-  pub fn new() -> Matrix<K> {
+  pub fn new() -> Self {
     Matrix {
       data: Vec::<Vec<K>>::new(),
       row: 0,
