@@ -196,7 +196,7 @@ impl<K> Matrix<K>
 
 pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Option<Vector<K>>
   where
-    K: std::ops::Mul<Output = K> + Copy + std::fmt::Debug + std::ops::Add<Output = K>
+    K: std::ops::AddAssign + std::ops::Mul<Output = K> + Copy
 {
   if u.len() != coefs.len() {
     return None;
@@ -216,7 +216,7 @@ pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Option<Vector<K>>
     let mut sum: K = coefs[0] * u[0].data[i];
 
     for j in 1..u.len() {
-      sum = sum + coefs[j] * u[j].data[i];
+      sum += coefs[j] * u[j].data[i];
     }
     result.push(sum);
   }
