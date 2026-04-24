@@ -194,12 +194,20 @@ impl<K> Matrix<K>
   }
 }
 
-pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Vector<K>
+pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Option<Vector<K>>
   where
     K: std::ops::Mul<Output = K> + Copy + std::fmt::Debug + std::ops::Add<Output = K>
 {
   if u.len() != coefs.len() {
-    ()
+    return None;
+  }
+
+  let lenght_test: usize = u[0].data.len();
+
+  for i in u {
+    if lenght_test != i.data.len() {
+      return None;
+    }
   }
 
   let mut result: Vector<K> = Vector::from(Vec::with_capacity(u[0].data.len()));
@@ -213,5 +221,5 @@ pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Vector<K>
     result.push(sum);
   }
 
-  result
+  Some(result)
 }
