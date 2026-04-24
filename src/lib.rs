@@ -213,7 +213,7 @@ pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Option<Vector<K>>
   let mut result: Vector<K> = Vector::from(Vec::with_capacity(u[0].data.len()));
 
   for i in 0..u[0].data.len() {
-    let mut sum = coefs[0] * u[0].data[i];
+    let mut sum: K = coefs[0] * u[0].data[i];
 
     for j in 1..u.len() {
       sum = sum + coefs[j] * u[j].data[i];
