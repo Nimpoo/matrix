@@ -200,6 +200,7 @@ pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Option<Vector<K>>
     K: std::ops::AddAssign + std::ops::Mul<Output = K> + Copy
 {
   if u.len() != coefs.len() {
+    eprintln!("Error: The list lenght of vectors is not equal to the list lenght of coeficients. ([Vector<K>].len() != [K].len())");
     return None;
   }
 
@@ -207,6 +208,7 @@ pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Option<Vector<K>>
 
   for i in u {
     if lenght_test != i.data.len() {
+      eprintln!("Error: Not all the vectors (in the list of vectors) has the same lenght.");
       return None;
     }
   }
