@@ -197,7 +197,7 @@ impl<K> Matrix<K>
 pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Option<Vector<K>>
   where
   // Bound from impl:
-    K: std::ops::AddAssign + std::ops::Mul<Output = K> + Copy
+    K: std::ops::AddAssign + std::ops::Mul<Output = K> + Copy// + std::fmt::Debug
 {
   if u.len() != coefs.len() {
     eprintln!("Error: The list lenght of vectors is not equal to the list lenght of coeficients. ([Vector<K>].len() != [K].len())");
@@ -217,12 +217,26 @@ pub fn linear_combination<K>(u: &[Vector<K>], coefs: &[K]) -> Option<Vector<K>>
 
   for i in 0..u[0].data.len() {
     let mut sum: K = coefs[0] * u[0].data[i];
+    // println!("i = {i}");
+    // println!("sum: coefs[0] * u[0].data[i] -> {:?} * {:?} = {:?}", coefs[0], u[0].data[i], sum);
+    // println!();
 
     for j in 1..u.len() {
       sum += coefs[j] * u[j].data[i];
+      // println!("j = {j}");
+      // println!("sum += coefs[j] * u[j].data[i] -> {:?} * {:?} ({:?}) = {:?}", coefs[j], u[j].data[i], coefs[j] * u[j].data[i], sum);
+      // println!();
     }
     result.push(sum);
   }
 
   Some(result)
+}
+
+pub fn lerp<V>(u: V, v: V, t: f32) -> Option<V>
+  where
+  // Bound from impl:
+  V: Copy
+{
+  Some(v)
 }
