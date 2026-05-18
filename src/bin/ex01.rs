@@ -6,9 +6,4 @@ fn main() {
   let v2 = Vector::from(vec![0., 10., -100.]);
 
   let res: Option<Vector<f32>> = linear_combination(&[v1, v2], &[10., -2.]);
-
-  match res {
-      
-  }
-  println!("Testing: {:?}", res.unwrap());
 }
