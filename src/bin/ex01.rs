@@ -7,5 +7,8 @@ fn main() {
 
   let res: Option<Vector<f32>> = linear_combination(&[v1, v2], &[10., -2.]);
 
-  println!("Testing: {:?}", res);
+  match res {
+      
+  }
+  println!("Testing: {:?}", res.unwrap());
 }
