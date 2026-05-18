@@ -59,7 +59,7 @@ fn main() {
       println!("The `vector_2` is correctly added to the `vector_1`.");
       println!("variable `vector_1` is now = [ {:?} ]", vector_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
 
@@ -77,7 +77,7 @@ fn main() {
       println!("The `vector_incorrect` is correctly added to the `vector_1`.");
       println!("variable `vector_1` is now = [ {:?} ]", vector_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
 
@@ -94,7 +94,7 @@ fn main() {
       println!("The `vector_2` is correctly substracted to the `vector_1`.");
       println!("variable `vector_1` is now = [ {:?} ]", vector_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
 
@@ -112,7 +112,7 @@ fn main() {
       println!("The `vector_incorrect` is correctly substracted to the `vector_1`.");
       println!("variable `vector_1` is now = [ {:?} ]", vector_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
 
@@ -131,7 +131,7 @@ fn main() {
       println!("The `vector_1` is correctly scaled to `int` (`int` = {}).", int);
       println!("variable `vector_1` is now = [ {:?} ]", vector_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
 
@@ -149,7 +149,7 @@ fn main() {
       println!("The `vector_incorrect` is correctly scaled to `int` (`int` = {}).", int);
       println!("variable `vector_1` is now = [ {:?} ]", vector_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
   println!();
@@ -205,7 +205,7 @@ fn main() {
       println!("The `matrix_2` is correctly added to `matrix_1`.");
       println!("The variable `matrix_1` is now = [ {:?} ]", matrix_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
 
@@ -226,7 +226,7 @@ fn main() {
       println!("The `matrix_erranous` is correctly added to `matrix_1`.");
       println!("The variable `matrix_1` is now = [ {:?} ]", matrix_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
 
@@ -243,7 +243,7 @@ fn main() {
       println!("The `matrix_2` is correctly substracted to `matrix_1`.");
       println!("The variable `matrix_1` is now = [ {:?} ]", matrix_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
 
@@ -260,7 +260,7 @@ fn main() {
       println!("The `matrix_erranous` is correctly substracted to `matrix_1`.");
       println!("The variable `matrix_1` is now = [ {:?} ]", matrix_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
 
@@ -278,7 +278,7 @@ fn main() {
       println!("The `matrix_1` is correctly scaled to `int` (`int` = {}).", int);
       println!("The variable `matrix_1` is now = [ {:?} ]", matrix_1);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   println!();
 
@@ -297,7 +297,7 @@ fn main() {
       println!("The `erraneous_matrix` is correctly scaled to `int` (`int` = {}).", int);
       println!("The variable `erraneous_matrix` is now = [ {:?} ]", erraneous_matrix);
     },
-    Err(msg) => println!("{}", msg),
+    Err(msg) => eprintln!("{}", msg),
   }
   // * ***************************************************************************
 }
